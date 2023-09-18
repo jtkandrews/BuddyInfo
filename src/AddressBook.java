@@ -7,16 +7,16 @@ public class AddressBook {
     public AddressBook(){
         buddyList = new ArrayList<>();
     }
-    public void addBuddy(String name, String address, int phoneNumber){
-        BuddyInfo buddy = new BuddyInfo(name, address, phoneNumber);
+    public void addBuddy(BuddyInfo buddy){
+        // BuddyInfo uddy = new BuddyInfo(uddy);
         buddyList.add(buddy);
     }
 
-    public boolean removeBuddy(String name) {
+    public boolean removeBuddy(BuddyInfo buddy) {
         Iterator<BuddyInfo> iterator = buddyList.iterator();
         while (iterator.hasNext()) {
-            BuddyInfo buddy = iterator.next();
-            if (buddy.getName().equals(name)){
+            BuddyInfo bud = iterator.next();
+            if (bud.getName().equals(buddy.getName())){
                 iterator.remove();
                 return true;
             }
@@ -25,7 +25,10 @@ public class AddressBook {
     }
 
     public static void main(String[] args) {
-        System.out.println("Address Book");
+        BuddyInfo buddy = new BuddyInfo("Tom", "Carleton", 613);
+        AddressBook addressBook = new AddressBook();
+        addressBook.addBuddy(buddy);
+        addressBook.removeBuddy(buddy);
     }
 }
 
